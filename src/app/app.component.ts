@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { assign, merge, defaults, defaultsDeep, isEqual} from 'lodash';
+import { assign, merge, defaults, defaultsDeep, isEqual, omitBy, isNull} from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -80,7 +80,8 @@ export class AppComponent {
         b: undefined
       }
     }
-    let answer = {};
+    obj1.a.b = null;
+    let answer = merge({}, obj1, obj2)
     console.log('合併', obj1, obj2, 'answer.a.b 為 falsy value，answer.a.c 為 2')
     console.log('通過:', !answer['a']['b'] && answer['a']['c'] === '2')
   }
@@ -107,7 +108,7 @@ export class AppComponent {
       d: '8',
     }
 
-    let answer = {};
+    let answer = defaults({}, omitBy(obj1, isNull), obj2)
     console.log('合併', obj1, obj2, '為', result)
     console.log('通過:', isEqual(answer, result))
   }
