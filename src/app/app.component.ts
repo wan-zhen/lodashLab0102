@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { assign, merge, defaults, defaultsDeep } from 'lodash';
+import { assign, merge, defaults, defaultsDeep, isEqual} from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -60,11 +60,55 @@ export class AppComponent {
   lesson6() {
     this.lesson = 6;
     console.clear();
-    console.log('assign', assign({}, { a: { a: '1' } }, { a: { b: '2' } }))
-    console.log('merge', merge({}, { a: { a: '1' } }, { a: { b: '2' } }))
-    console.log('defaults', defaults({}, { a: { a: '1' } }, { a: { b: '2' } }))
-    console.log('defaultsDeep', defaultsDeep({}, { a: { a: '1' } }, { a: { b: '2' } }))
+    console.log('assign', assign({}, { a: { c: '1' } }, { a: { b: '2' } }))
+    console.log('merge', merge({}, { a: { c: '1' } }, { a: { b: '2' } }))
+    console.log('defaults', defaults({}, { a: { c: '1' } }, { a: { b: '2' } }))
+    console.log('defaultsDeep', defaultsDeep({}, { a: { c: '1' } }, { a: { b: '2' } }))
   }
 
+  lesson7() {
+    this.lesson = 7;
+    console.clear();
+    let obj1 = {
+      a: {
+        b: '1',
+        c: '2'
+      }
+    }
+    let obj2 = {
+      a: {
+        b: undefined
+      }
+    }
+    let answer = {};
+    console.log('合併', obj1, obj2, 'answer.a.b 為 falsy value，answer.a.c 為 2')
+    console.log('通過:', !answer['a']['b'] && answer['a']['c'] === '2')
+  }
 
+  lesson8() {
+    this.lesson = 8;
+    console.clear();
+    let obj1 = {
+      a: '1',
+      b: undefined,
+      c: '3',
+      d: null,
+    }
+    let obj2 = {
+      a: '5',
+      b: '6',
+      c: '7',
+      d: '8',
+    }
+    let result = {
+      a: '1',
+      b: '6',
+      c: '3',
+      d: '8',
+    }
+
+    let answer = {};
+    console.log('合併', obj1, obj2, '為', result)
+    console.log('通過:', isEqual(answer, result))
+  }
 }

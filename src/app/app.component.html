@@ -4,6 +4,8 @@
 <button (click)="lesson4()">怎麼處理 null 的</button>
 <button (click)="lesson5()">怎麼處理 undefined 的</button>
 <button (click)="lesson6()">怎麼處理兩層 object 的</button>
+<button (click)="lesson7()">練習1</button>
+<button (click)="lesson8()">練習2</button>
 <div [ngSwitch]="lesson">
     <div *ngSwitchCase="1">
         <p>合併 &#123; a: '1' &#125; &#123; b: '2' &#125;</p>
@@ -22,7 +24,13 @@
         <p>合併 &#123; a: '1' &#125; &#123; a: undefined &#125;</p>
     </div>
     <div *ngSwitchCase="6">
-        <p>合併 &#123; a: &#123; a: '1' &#125; &#125; &#123; a: &#123; b: '2' &#125; &#125;</p>
+        <p>合併 &#123; a: &#123; c: '1' &#125; &#125; &#123; a: &#123; b: '2' &#125; &#125;</p>
+    </div>
+    <div *ngSwitchCase="7">
+        <p>練習1</p>
+    </div>
+    <div *ngSwitchCase="8">
+        <p>練習2</p>
     </div>
 </div>
 <h1>_.assign</h1>
